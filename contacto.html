@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/contacto.css">
+    <script src="js/contacto.js"></script>
+    <title>Contacto</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a class="navbar-brand" rel="home" href="#" title="Logo">
+                <img style="max-width:100px; margin-top: -7px;" src="img/Logo.png">
+            </a>
+            <nav class="navbar navbar-expand-sm bg-light justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">INICIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="giftcard.html">GIFTCARD</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">CONTACTO</a>
+                    </li>
+                </ul>
+            </nav>
+            <br>
+        </div>
+
+    </header>
+
+    <div class="contacto">
+        <div id="formulario" class="formularioContacto">
+            <form action="#" method="get" class="form-contacto" onsubmit="validar()">
+                <H2>Contacto</H2>
+                <label for="nombreyapellido">Nombre y Apellido:</label>
+                <input class="input-text" type="text" name="nombreyapellido" id="nombreyapellido">
+
+                <label for="miemail">Correo electrónico :</label>
+                <input class="input-text" type="email" name="miemail" id="miemail">
+                <label for="telefono">Número de Teléfono:</label>
+                <input class="input-text" type="tel" name="telefono" id="telefono">
+
+                <label class="input-text" form="consulta">Ingrese la consulta que desea realizar:</label>
+
+                <textarea class="consultas" rows="10" cols="50" name="consultas" id="consultas"
+                    onkeyup="contarCaracteres()" maxlength="1000">
+                    </textarea>
+                <p>Te quedan: <span id="caracteres">0/1000 caracteres restantes</span></p>
+                <input type="submit" class="button-large" value="Enviar">
+                <div id="mensaje" class="error">
+                </div>
+            </form>
+        </div>
+        </form>
+    </div>
+
+    <div class="ubicacion-mapa">
+        <h2>UBICACIÓN</h2>
+        <div class="map-google">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6569.428482148564!2d-58.439389133001384!3d-34.586096465395286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc945173b3dd7%3A0xe8a347bb55df550c!2sCODER%20HOUSE%20%7C%20Coderhouse%20S.R.L.!5e0!3m2!1ses-419!2sar!4v1646423747364!5m2!1ses-419!2sar"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+    </div>
+
+
+</body>
+
+</html>

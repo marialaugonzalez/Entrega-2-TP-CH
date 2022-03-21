@@ -1,0 +1,372 @@
+#cargando {
+    display: none;
+}
+.navbar-brand {
+    padding: 0px; /* firefox bug fix */
+  }
+  .navbar-brand>img {
+    height: 100%;
+    padding: 15px; /* firefox bug fix */
+    width: auto;
+  }
+
+
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /*---------------------------------------------Responsive Fuente-----------------------------------------------------------------*/
+  h3 {
+    font-size: 1.2em;
+  }
+  p {
+    font-size: 1em;
+  }
+  body {
+    font-size: 70%;
+  }
+  @media screen and (min-width: 47em) {
+    body {
+      font-size: 85%;
+    }
+  }
+  @media screen and (min-width: 60em) {
+    body {
+      font-size: 130%;
+    }
+  }
+  
+  body {
+    background-image: url(../img/fondo-blanco.jpg);
+    background-size: 100%;
+    background-repeat: repeat-y;
+    font-family: "Oswald", sans-serif;
+  }
+  
+  h2 {
+    box-sizing: border-box;
+    color: #63708d;
+  }
+  
+  h3 {
+    text-align: center;
+    box-sizing: border-box;
+    margin-bottom: 0.5em;
+  }
+  
+  .red-social a {
+    margin-right: 0.5em;
+  }
+  
+  .carrito-de-compras {
+    margin-right: 2em;
+    position: relative;
+  }
+  
+  .cantidad-carrito {
+    font-size: 0.7em;
+    position: absolute;
+    top: -20px;
+    left: 4px;
+    background: rgb(241, 103, 11);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 2px;
+  }
+  
+  .contenedor-header {
+    background: linear-gradient(
+      360deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(232, 233, 204, 1) 8%,
+      rgba(218, 237, 245, 1) 100%
+    );
+    color: rgb(255, 255, 255);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 100px;
+    margin-left: 20px;
+  }
+  
+  .carrito {
+    width: 30px;
+    position: absolute;
+    z-index: 50;
+  }
+  
+  .search {
+    display: flex;
+    width: 150%;
+  }
+  
+  .search input {
+    height: 2.5em;
+    padding: 0.2em 0.3em 0.2em 2em;
+    border: 0.22em solid #fff;
+    border-radius: 1em 0em 0em 1em;
+  }
+  
+  .search button {
+    width: 27%;
+    height: 2.5em;
+    border: 0.3px solid #fff;
+    padding: 0.2em;
+    border-radius: 0em 1em 1em 0em;
+  }
+  
+  .separador {
+    background-color: #000;
+    padding: 3px;
+  }
+  
+  .menu {
+    background-color: rgb(218, 225, 243);
+  }
+  
+  .menu ul {
+    justify-content: center;
+  }
+  
+  .menu li {
+    list-style: none;
+    text-align: center;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    color: rgb(45, 33, 77);
+    padding: 10px;
+    display: block;
+  }
+  
+  .menu a:hover {
+    color: rgb(226, 220, 255);
+    background-color: rgb(49, 17, 190);
+  }
+  
+  a.desplegable {
+    display: block;
+    width: 47px;
+    height: 47px;
+    background-image: url(../img/hamburger.gif);
+    background-color: rgb(121, 145, 209);
+    position: fixed;
+    cursor: pointer;
+  }
+  a.desplegable:hover {
+    background-color: rgb(121, 145, 209);
+  }
+  .menu {
+    display: none;
+  }
+  
+  .contenedor {
+    display: flex;
+    justify-content: space-between;
+  }
+  .datos-user {
+    margin-left: 30%;
+    margin-top: 5%;
+    text-align: left;
+  }
+  .producto {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    margin-top: 5%;
+    margin-block-end: 5%;
+  }
+  .tarjeta {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    margin-top: 5%;
+    margin-block-end: 5%;
+  }
+  .cuotas {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    margin-top: 5%;
+    margin-block-end: 5%;
+  }
+  .calcular {
+    margin-left: 30%;
+    margin-top: 5%;
+    text-align: center;
+  }
+  .button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    margin-top: 5%;
+    margin-block-end: 5%;
+    color: #f3e3ec;
+    background-color: #ed0c8f;
+    padding: 10px 30px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  footer {
+    margin-top: 3px;
+    text-align: left;
+    background: linear-gradient(
+      360deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(142, 169, 191, 0.8519782913165266) 100%,
+      rgba(0, 212, 255, 1) 100%
+    );
+    font-size: 1.125em;
+    color: cornsilk;
+    padding-bottom: 1em;
+    font-weight: 700;
+    max-width: 100%;
+  }
+  
+  .footer-columnas {
+    display: flex;
+    justify-content: space-around;
+    padding: 1em;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .red-social {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .red-social img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .menu-inferior li,
+  p {
+    list-style: none;
+    margin-bottom: 9px;
+  }
+  
+  .menu-inferior a {
+    text-decoration: none;
+  }
+  
+  .menu-inferior {
+    text-align: left;
+  }
+  
+  .footer-columnas p,
+  a {
+    color: black;
+  }
+  
+  .sub-title {
+    margin-left: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 2.18em;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .input-text {
+    height: 30px;
+  }
+  
+  label {
+    font-size: 1.25em;
+  }
+  
+  .footer-fixed {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+  }
+  
+  .menu-selected-item {
+    background-color: #fcfcfc;
+  }
+  
+  .menu-selected-item a {
+    color: #63708d;
+  }
+  
+  @media screen and (min-width: 47em) {
+    .menu ul {
+      display: flex;
+      justify-content: center;
+    }
+    .menu {
+      display: block;
+    }
+    a.desplegable {
+      display: none;
+    }
+  
+    .contenedor-cursos-iniciales {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 50px;
+      max-width: 100%;
+    }
+  
+    .img-inicial {
+      margin-bottom: 0.5em;
+      width: calc(50% - 1em);
+    }
+  
+    .contenedor-destacados {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 30px;
+    }
+  
+    .destacados-item {
+      width: calc (50%-1em);
+    }
+  
+    .footer-columnas {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  
+  @media screen and (min-width: 60em) {
+    .destacados-item {
+      width: calc(33%-1em);
+    }
+  
+    .img-inicial {
+      width: calc(25% - 1em);
+    }
+  
+    .menu ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .menu {
+      display: block;
+    }
+    a.desplegable {
+      display: none;
+    }
+  }
+
+
