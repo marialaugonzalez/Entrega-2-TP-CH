@@ -160,11 +160,14 @@ renderProductos();
 renderCarrito();
 
 //localStorage.clear;
-const elementStorage = localStorage.getItem("elementsId");
-if(elementStorage){
-    eCarrito = JSON.parse(elementStorage);
+//const elementStorage = localStorage.getItem("elementsId");
+//if(elementStorage){
+//    eCarrito = JSON.parse(elementStorage);
   
-}
+//}
+//Operador lógico OR
+eCarrito =  JSON.parse( localStorage.getItem('elementsId') ) || [];
+
 renderCarrito();
 
 
