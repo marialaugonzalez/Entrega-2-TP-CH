@@ -66,6 +66,7 @@ function renderProductos() {
             Toastify({
                 text: "Agregaste un producto al carrito",
                 duration: 2000,
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
                 offset: {
                     x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
                     y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
@@ -119,6 +120,7 @@ function renderCarrito() {
             Toastify({
                 text: "Quitaste un producto del carrito",
                 duration: 2000,
+                backgroundColor: "linear-gradient(red, yellow)",
                 offset: {
                     x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
                     y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
@@ -178,6 +180,7 @@ buttonVaciar.addEventListener('click', () => {
     Toastify({
         text: "Vaciaste el carrito",
         duration: 2000,
+        backgroundColor: "linear-gradient(#e66465, #9198e5)",
         offset: {
             x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
             y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
