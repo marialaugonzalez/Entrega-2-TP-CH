@@ -62,6 +62,16 @@ function renderProductos() {
         nodoBoton.textContent = 'Agregar';
         nodoBoton.setAttribute('id', data.id);
         nodoBoton.addEventListener('click', addCursoCarrito);
+        nodoBoton.addEventListener('click', () => {
+            Toastify({
+                text: "Agregaste un producto al carrito",
+                duration: 2000,
+                offset: {
+                    x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+                    y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+                  },
+            }).showToast();
+        } );
         // Insertamos
         nodoCardBody.appendChild(nodoImagen);
         nodoCardBody.appendChild(nodoTitle);
@@ -96,6 +106,7 @@ function renderCarrito() {
         const nodo = document.createElement('li');
         nodo.classList.add('list-group-item', 'text-right', 'mx-2');
         nodo.textContent = `1 x ${itemCurso[0].title} - ${moneda}${itemCurso[0].precio}`;
+       
        // localStorage.setItem('elements', JSON.stringify(miNodo.textContent))        
         // Boton para borrado
         const buttonDelete= document.createElement('button');
@@ -104,6 +115,16 @@ function renderCarrito() {
         buttonDelete.style.marginLeft = '1rem';
         buttonDelete.dataset.item = item;
         buttonDelete.addEventListener('click', delCursoCarrito);
+        buttonDelete.addEventListener('click', () => {
+            Toastify({
+                text: "Quitaste un producto del carrito",
+                duration: 2000,
+                offset: {
+                    x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+                    y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+                  },
+            }).showToast();
+        } );
         // Mezclamos nodos
         nodo.appendChild(buttonDelete);
         carrito.appendChild(nodo);
@@ -147,12 +168,22 @@ function calcularTotal() {
 function vaciarCarrito() {
     // Limpiamos los productos guardados
     eCarrito = [];
-    // Renderizamos los cambios
+   // Renderizamos los cambios
     renderCarrito();
 }
 
 // Eventos
 buttonVaciar.addEventListener('click', vaciarCarrito);
+buttonVaciar.addEventListener('click', () => {
+    Toastify({
+        text: "Vaciaste el carrito",
+        duration: 2000,
+        offset: {
+            x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+            y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+          },
+    }).showToast();
+} );
 
 // Inicio
 
