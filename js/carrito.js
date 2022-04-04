@@ -18,7 +18,6 @@ const bd = [
       "thumbnailUrl": "img/Python.png"
     }
   ];
-  
 
 let eCarrito = [];
 
@@ -30,6 +29,8 @@ const buttonVaciar = document.querySelector('#boton-vaciar');
 const moneda = '$';
 
 // Funciones
+
+
 
 //Acá se intentó buscar como hacer en boostrap esto de agregar los productos del JSON.
 //Intenté, hacer el JSON como local, pero al intentar tomarlo con un Fetch me dabael siguiente error:
@@ -61,7 +62,7 @@ function renderProductos() {
         nodoBoton.classList.add('btn', 'btn-primary');
         nodoBoton.textContent = 'Agregar';
         nodoBoton.setAttribute('id', data.id);
-        nodoBoton.addEventListener('click', addCursoCarrito);
+        nodoBoton.addEventListener('click',  addCursoCarrito);
         nodoBoton.addEventListener('click', () => {
             Toastify({
                 text: "Agregaste un producto al carrito",
@@ -91,18 +92,16 @@ function addCursoCarrito(evento) {
     eCarrito.push(evento.target.getAttribute('id'))
     //LocalStorage
     localStorage.setItem('elementsId', JSON.stringify(eCarrito))
-    renderCarrito();
+   renderCarrito();
 
 }
 
 
-function renderCarrito() {
+function renderCarrito () {
     carrito.textContent = '';
         eCarrito.forEach((item) => {
  //     busco el items que necesito de la BD
-        const itemCurso = bd.filter((itembd) => {
-           return itembd.id === parseInt(item);
-        });
+        const itemCurso = bd.filter((itembd) => itembd.id === parseInt(item));
 //Agrego el LI
         const nodo = document.createElement('li');
         nodo.classList.add('list-group-item', 'text-right', 'mx-2');
@@ -176,6 +175,7 @@ function vaciarCarrito() {
 
 // Eventos
 buttonVaciar.addEventListener('click', vaciarCarrito);
+
 buttonVaciar.addEventListener('click', () => {
     Toastify({
         text: "Vaciaste el carrito",
@@ -186,22 +186,38 @@ buttonVaciar.addEventListener('click', () => {
             y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
           },
     }).showToast();
-} );
+} ) ;
 
 // Inicio
 
+
+//Acá me hice lio.. quise hacer el fetch pero se me complicó al querer hacer el render del carrito
+//el de productos funciona ok, si le paso (data) que es mi json local. 
+//Pero al querer pasar data a renderCarrito ahi tengo lio, porque ese data, lo quiero pasar como parámetro
+// en los AddEventListener y no me funciona. Mi idea, era pasar ese data del JSON por parámetro en todas las otras funciones
+// pero no me funciona. Me ayudas a darme una idea como le paso los d atos del JSON a mi renderCarrito?
+//estuve todo el día de hoy y estoy trabada
+
+//const fetchDatos = async () => {
+	//Funcion para traer datos disponibles desde  JSON
+//    fetch("./data.json")
+//   .then(response => {
+//       return response.json();
+//    })       
+//   .then(data => 
+//        {
+//            renderProductos(data);Este me funiciona bien
+//            renderCarrito(data); este me funciona mal
+//            eCarrito =  JSON.parse( localStorage.getItem('elementsId') ) || [];
+//       }
+        
+        
+//        ) };
+
+//fetchDatos();
 renderProductos();
 renderCarrito();
-
-//localStorage.clear;
-//const elementStorage = localStorage.getItem("elementsId");
-//if(elementStorage){
-//    eCarrito = JSON.parse(elementStorage);
-  
-//}
-//Operador lógico OR
 eCarrito =  JSON.parse( localStorage.getItem('elementsId') ) || [];
-
-renderCarrito();
+//Operador lógico OR
 
 
