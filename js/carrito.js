@@ -1,23 +1,4 @@
-const bd = [
-    {
-      "precio": 5000,
-      "id": 1,
-      "title": "Curso JavaScript",
-      "thumbnailUrl": "img/js.png"
-    },
-    {
-      "precio": 3000,
-      "id": 2,
-      "title": "Curso Html",
-      "thumbnailUrl": "img/HTML5.png"
-    },
-    {
-      "precio": 1000,
-      "id": 3,
-      "title": "Curso Phyton",
-      "thumbnailUrl": "img/Python.png"
-    }
-  ];
+
 
 let eCarrito = [];
 
@@ -30,14 +11,8 @@ const moneda = '$';
 
 // Funciones
 
-
-
-//Acá se intentó buscar como hacer en boostrap esto de agregar los productos del JSON.
-//Intenté, hacer el JSON como local, pero al intentar tomarlo con un Fetch me dabael siguiente error:
-//data.json ERR_FAILED . has been blocked by CORS policy...esto no se a que se debe. Vi en tuto
-// que te debería dejar ahcer eso pero a mi me da error lo siguiente:
-//const res = await fetch('../data/data.json');
-function renderProductos() {
+//Coloca los productos en el HTML
+function renderProductos(bd) {
     bd.forEach((data) => {
         // Estructura
         const nodo = document.createElement('div');
@@ -53,7 +28,7 @@ function renderProductos() {
         const nodoImagen = document.createElement('img');
         nodoImagen.classList.add('img-fluid');
         nodoImagen.setAttribute('src', data.thumbnailUrl);
-        // Precio
+       // Precio
         const nodoPrecio = document.createElement('p');
         nodoPrecio.classList.add('card-text');
         nodoPrecio.textContent = `${moneda}${data.precio}`;
@@ -62,18 +37,22 @@ function renderProductos() {
         nodoBoton.classList.add('btn', 'btn-primary');
         nodoBoton.textContent = 'Agregar';
         nodoBoton.setAttribute('id', data.id);
-        nodoBoton.addEventListener('click',  addCursoCarrito);
-        nodoBoton.addEventListener('click', () => {
+        nodoBoton.addEventListener('click', (e => {
+            addCursoCarrito(e)        
             Toastify({
                 text: "Agregaste un producto al carrito",
-                duration: 2000,
+               duration: 2000,
                 backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
-                offset: {
+               offset: {
                     x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-                    y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+                    y: 10  // vertical axis - can be a number or a string indicating unity. eg: '2em'
                   },
-            }).showToast();
-        } );
+         }).showToast();         
+        
+        }));
+       // nodoBoton.addEventListener('click', () => {
+       
+
         // Insertamos
         nodoCardBody.appendChild(nodoImagen);
         nodoCardBody.appendChild(nodoTitle);
@@ -81,41 +60,73 @@ function renderProductos() {
         nodoCardBody.appendChild(nodoBoton);
         nodo.appendChild(nodoCardBody);
         items.appendChild(nodo);
-    });
-}
+    } 
+) };
 
 /**
  * Evento para añadir un producto al carrito de la compra
  */
-function addCursoCarrito(evento) {
+ function addCursoCarrito(e) {
     
-    eCarrito.push(evento.target.getAttribute('id'))
-    //LocalStorage
-    localStorage.setItem('elementsId', JSON.stringify(eCarrito))
-   renderCarrito();
+     setCarrito(e.target.parentElement);
+       
+}
 
+const setCarrito = objeto => {
+
+    let cantidad;
+    let idExiste;
+    const curso = {
+        id:      objeto.querySelector("button").id,
+        title:   objeto.querySelector("h5").textContent,
+        precio : objeto.querySelector("p").textContent  ,        
+        cantidad : 1 
+    }
+
+    if (eCarrito.length != 0){
+        eCarrito.forEach((item) => {
+            if (item.id == curso.id ){
+            cantidad = item.cantidad + 1;   
+            idExiste = 'X';       
+            }
+  
+        } ) 
+
+        if (idExiste == 'X'){
+        curso.cantidad = cantidad;  
+    }
+    else{
+        curso.cantidad = 1;
+    }
 }
 
 
-function renderCarrito () {
-    carrito.textContent = '';
-        eCarrito.forEach((item) => {
- //     busco el items que necesito de la BD
-        const itemCurso = bd.filter((itembd) => itembd.id === parseInt(item));
-//Agrego el LI
+    eCarrito[curso.id] = {...curso}
+    renderCarrito () ;
+}
+
+const renderCarrito = () => {
+    carrito.textContent = '';  
+    total.textContent = '';
+   
+    const carritoSinDuplicados = [...new Set(eCarrito)];
+    Object.values(eCarrito).forEach(curso => {
         const nodo = document.createElement('li');
         nodo.classList.add('list-group-item', 'text-right', 'mx-2');
-        nodo.textContent = `1 x ${itemCurso[0].title} - ${moneda}${itemCurso[0].precio}`;
+        //nodo.textContent = `1 x ${itemCurso[0].title} - ${moneda}${itemCurso[0].precio}`;
+        nodo.textContent = `${curso.cantidad} x ${curso.title} - ${curso.precio}`;
        
-       // localStorage.setItem('elements', JSON.stringify(miNodo.textContent))        
+       //localStorage.setItem('elements', JSON.stringify(miNodo.textContent))        
         // Boton para borrado
         const buttonDelete= document.createElement('button');
         buttonDelete.classList.add('btn', 'btn-danger', 'mx-7');
         buttonDelete.textContent = 'Delete';
         buttonDelete.style.marginLeft = '1rem';
-        buttonDelete.dataset.item = item;
-        buttonDelete.addEventListener('click', delCursoCarrito);
-        buttonDelete.addEventListener('click', () => {
+        buttonDelete.dataset.item = curso.id;
+        //buttonDelete.addEventListener('click', delCursoCarrito);
+        //buttonDelete.addEventListener('click', () => {
+            buttonDelete.addEventListener('click', (e => {
+                delCursoCarrito(e)        
             Toastify({
                 text: "Quitaste un producto del carrito",
                 duration: 2000,
@@ -125,13 +136,18 @@ function renderCarrito () {
                     y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
                   },
             }).showToast();
-        } );
+        }));
+       // } );
         // Mezclamos nodos
         nodo.appendChild(buttonDelete);
         carrito.appendChild(nodo);
+          // Renderizamos el precio total en el HTML
+          total.textContent = calcularTotal();
+          //LocalStorage
+    localStorage.setItem('carrito', JSON.stringify(eCarrito))
+     
     });
-    // Renderizamos el precio total en el HTML
-    total.textContent = calcularTotal();
+  
 }
 
 /**
@@ -139,28 +155,25 @@ function renderCarrito () {
  */
 function delCursoCarrito(evento) {
     // Obtenemos el producto ID que hay en el boton pulsado
-    const id = evento.target.dataset.item;
+    const id = evento.target.dataset.item ;
     // Borramos todos los productos
-    eCarrito = eCarrito.filter((carritoId) => {
-        return carritoId !== id;
-    });
-    // volvemos a renderizar
-    renderCarrito();
+    //delete eCarrito[evento.target.dataset.item];
+    eCarrito = eCarrito.filter(carritoId => carritoId.id !== id);     
+    renderCarrito () ;
+
 }
 
 /**
  * Calcula el precio total teniendo en cuenta los productos repetidos
  */
 function calcularTotal() {
-    // Recorremos el array del carrito 
-    return eCarrito.reduce((total, item) => {
-        // De cada elemento obtenemos su precio
-        const itemCurso = bd.filter((itemBd) => {
-            return itemBd.id === parseInt(item);
-        });
-        // Los sumamos al total
-        return total + itemCurso[0].precio;
-    }, 0).toFixed(2);
+
+    let sum = 0;
+   for (const key in Object.values(eCarrito)) {
+    let precio = Object.values(eCarrito)[key].precio.substr(1);
+     sum += parseInt(precio) * Object.values(eCarrito)[key].cantidad;      
+    }
+    return sum;
 }
 
 /**
@@ -169,6 +182,7 @@ function calcularTotal() {
 function vaciarCarrito() {
     // Limpiamos los productos guardados
     eCarrito = [];
+    total.textContent = '';
    // Renderizamos los cambios
     renderCarrito();
 }
@@ -188,36 +202,28 @@ buttonVaciar.addEventListener('click', () => {
     }).showToast();
 } ) ;
 
-// Inicio
 
-
-//Acá me hice lio.. quise hacer el fetch pero se me complicó al querer hacer el render del carrito
-//el de productos funciona ok, si le paso (data) que es mi json local. 
-//Pero al querer pasar data a renderCarrito ahi tengo lio, porque ese data, lo quiero pasar como parámetro
-// en los AddEventListener y no me funciona. Mi idea, era pasar ese data del JSON por parámetro en todas las otras funciones
-// pero no me funciona. Me ayudas a darme una idea como le paso los d atos del JSON a mi renderCarrito?
-//estuve todo el día de hoy y estoy trabada
-
-//const fetchDatos = async () => {
+ fetchDatos = async () => {
 	//Funcion para traer datos disponibles desde  JSON
-//    fetch("./data.json")
-//   .then(response => {
-//       return response.json();
-//    })       
-//   .then(data => 
-//        {
-//            renderProductos(data);Este me funiciona bien
-//            renderCarrito(data); este me funciona mal
-//            eCarrito =  JSON.parse( localStorage.getItem('elementsId') ) || [];
-//       }
-        
-        
-//        ) };
+   fetch("./data.json")
+  .then(response => {
+      return response.json();
+    })       
+   .then(data => 
+      {
+          
+          renderProductos(data);
+          renderCarrito();                   
+     }
+                
+       ) };
 
-//fetchDatos();
-renderProductos();
-renderCarrito();
-eCarrito =  JSON.parse( localStorage.getItem('elementsId') ) || [];
-//Operador lógico OR
+
+ fetchDatos();
+ if (localStorage.getItem("carrito")) {
+ eCarrito =  JSON.parse( localStorage.getItem('carrito') ) 
+ renderCarrito();   
+}
+
 
 

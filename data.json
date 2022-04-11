@@ -3,18 +3,21 @@
       "precio": 5000,
       "id": 1,
       "title": "Curso JavaScript",
+      "moneda": "$",
       "thumbnailUrl": "img/js.png"
     },
     {
       "precio": 3000,
       "id": 2,
       "title": "Curso Html",
+      "moneda": "$",
       "thumbnailUrl": "img/HTML5.png"
     },
     {
       "precio": 1000,
       "id": 3,
       "title": "Curso Phyton",
+      "moneda": "$",
       "thumbnailUrl": "img/Python.png"
     }
   ] 
