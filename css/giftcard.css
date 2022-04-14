@@ -1,0 +1,311 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-image: url(../img/fondo-blanco.jpg);
+	font-family: 'Lato', sans-serif;
+}
+
+.contenedor {
+	width: 90%;
+	padding: 40px 20px;
+	margin: auto;
+	display: flex;
+	flex-direction:  row;
+	align-items: flex-start; 
+    display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+    font-family: 'Lato', sans-serif;
+     
+}
+
+
+.giftcard {
+	width: 100%;
+	max-width: 550px;
+	position: relative;
+	color: rgb(50, 9, 9);
+	transition: .3s ease all;
+	transform: rotateY(0deg);
+	transform-style: preserve-3d;
+	cursor: pointer;
+	z-index: 2;
+    
+    background-color: rgb(204, 228, 237);   
+}
+
+
+.giftcard > div {
+	padding: 30px;
+	border-radius: 15px;
+	min-height: 315px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	box-shadow: 0 10px 10px 0 rgba(90,116,148,0.3);
+}
+
+
+
+.giftcard.delante {
+	width: 100%;
+	background: #1850b1;
+	background-size: auto;
+}
+
+.delante .logo-marca {
+	text-align: end;
+	min-height: 250px;
+}
+
+.delante .logo-marca img {
+	width: 100%;
+	height: 120%;
+	object-fit: cover;
+	max-width: 200px;
+}
+
+.delante .logo {
+	width: 50%;
+	max-width: 50px;
+	margin-bottom: 20px;
+    margin-top: -250px;
+    margin-left: auto;
+}
+
+.delante .grupo .label {
+	font-size: 16px;
+	color: #0a1a29;
+	margin-bottom: 5px;
+}
+
+.delante .grupo .curso,
+.delante .grupo .nombre,
+.delante .grupo .fecha {
+	color: rgb(16, 8, 8);
+	font-size: 22px;
+	text-transform: uppercase;
+}
+
+.delante .flexbox {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+
+.columna-vista, .columna-personalizacion{
+	width: calc(50% - 40px);
+}
+
+
+.gitf-circulo-negro {
+  height: 25px;
+  width: 25px;
+  background-color: #000;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.verde {  
+  color: rgb(14, 187, 106);
+ }
+
+.rojo {  
+  color: rgb(167, 36, 36);  
+}
+
+.azul {  
+  color:  rgb(23, 5, 102); 
+}
+
+.gris {  
+  color:  floralwhite; 
+}
+
+.negro {  
+  color:  #000; 
+}
+.gitf-circulo-verde {
+  height: 25px;
+  width: 25px;
+  background-color: rgb(14, 187, 106);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.gitf-circulo-rojo {
+  height: 25px;
+  width: 25px;
+  background-color: rgb(167, 36, 36); 
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.gitf-circulo-gris {
+  height: 25px;
+  width: 25px;
+  background-color:  floralwhite; 
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.gitf-circulo-azul {
+  height: 25px;
+  width: 25px;
+  background-color: rgb(23, 5, 102);
+  border-radius: 50%;
+  display: inline-block;
+}
+input[type="radio"] {
+  margin-top: -1px;
+  vertical-align: middle;
+  display: block;
+  margin: 0 auto;
+}
+
+.personalizada{
+	width: 100%;
+}
+
+.personalizada h1,h3{
+	margin-bottom: 30px;
+    font-family: 'Lato', sans-serif;
+    font-size: medium;
+}
+
+.gift-monto h3{
+	margin-bottom: 0px!important;
+}
+
+.personalizada input[type="text"]{
+	border-bottom: 10px;
+	width: 100%;
+	height: 30px;
+}
+
+.selec-circulo{
+	display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.negro{
+color: black;
+}
+
+.cuadrado{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cuadrado-hijo1{
+  height: 25px;
+  width: 25px;
+  background-color: rgb(33, 237, 206);  
+  display: inline-block;
+  
+}
+
+.cuadrado-hijo2{
+    height: 25px;
+    width: 25px;
+    background-color: rgb(236, 99, 64);  
+    display: inline-block;
+}
+
+.cuadrado-hijo3{
+    height: 25px;
+    width: 25px;
+    background-color: rgb(204, 228, 237);   
+    display: inline-block;
+}
+.cuadrado-hijo4{
+    height: 25px;
+    width: 25px;
+    background-color: rgb(160, 57, 121);  
+    display: inline-block;
+ 
+    }
+    .cuadrado-hijo5{
+        height: 25px;
+        width: 25px;
+        background-color: rgb(28, 119, 152);  
+        display: inline-block;
+        }
+
+
+
+.gift-nombre{
+	display: flex;
+    justify-content: flex-start;
+}
+
+.gift-name{
+	display: flex;
+    justify-content: flex-start;
+}
+
+.gift-nombre h3{
+	margin-right: 15px;
+}
+
+.gift-button{
+	background-color: black; /* Green */
+  border-radius: 12px;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.gift-fila, .gift-monto{
+	margin-bottom: 20px;
+	margin-top: 15px;
+}
+
+.red-social h3{
+    margin-bottom: 10px;
+}
+
+.menu-inferior h3{
+    margin-bottom: 10px;
+}
+
+.menu-inferior h3{
+    margin-bottom: 10px;
+}
+
+.color1{
+    background-color: rgb(33, 237, 206);  
+}
+
+.color2{
+    background-color: rgb(236, 99, 64);  
+}
+.color3{
+    background-color: rgb(204, 228, 237);     
+}
+.color4{
+    background-color: rgb(160, 57, 121);  
+}
+.color5{
+    background-color: rgb(28, 119, 152);  
+}
+
+.titulo-gift{
+    text-align: right;
+    font-size: 40px;
+    font-style: italic;
+}

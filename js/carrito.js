@@ -2,7 +2,7 @@
 
 let eCarrito = [];
 
-
+//localStorage.removeItem('carriito');
 const items = document.querySelector('#items');
 const carrito = document.querySelector('#carrito');
 const total = document.querySelector('#total');
@@ -69,6 +69,8 @@ function renderProductos(bd) {
  function addCursoCarrito(e) {
     
      setCarrito(e.target.parentElement);
+     
+     
        
 }
 
@@ -76,6 +78,7 @@ const setCarrito = objeto => {
 
     let cantidad;
     let idExiste;
+    let idx;
     const curso = {
         id:      objeto.querySelector("button").id,
         title:   objeto.querySelector("h5").textContent,
@@ -84,32 +87,41 @@ const setCarrito = objeto => {
     }
 
     if (eCarrito.length != 0){
-        eCarrito.forEach((item) => {
+        eCarrito.forEach(function(item, index) {
             if (item.id == curso.id ){
-            cantidad = item.cantidad + 1;   
-            idExiste = 'X';       
-            }
-  
-        } ) 
+                cantidad = item.cantidad + 1;   
+                idExiste = 'X';  
+                idx = index;  
+                }
+        });
+
+
+
 
         if (idExiste == 'X'){
-        curso.cantidad = cantidad;  
-    }
-    else{
-        curso.cantidad = 1;
+        curso.cantidad = cantidad; 
+
+        }
+       else{
+           curso.cantidad = 1;
+           idx = eCarrito.length;
     }
 }
+else{
+    idx = 0;
+}
 
-
-    eCarrito[curso.id] = {...curso}
-    renderCarrito () ;
+eCarrito[idx] = {...curso}    
+if (eCarrito.length !=0){
+    localStorage.setItem('carriitooo', JSON.stringify(eCarrito))
+ }
+ renderCarrito () ;
 }
 
 const renderCarrito = () => {
     carrito.textContent = '';  
     total.textContent = '';
    
-    const carritoSinDuplicados = [...new Set(eCarrito)];
     Object.values(eCarrito).forEach(curso => {
         const nodo = document.createElement('li');
         nodo.classList.add('list-group-item', 'text-right', 'mx-2');
@@ -141,10 +153,11 @@ const renderCarrito = () => {
         // Mezclamos nodos
         nodo.appendChild(buttonDelete);
         carrito.appendChild(nodo);
-          // Renderizamos el precio total en el HTML
-          total.textContent = calcularTotal();
-          //LocalStorage
-    localStorage.setItem('carrito', JSON.stringify(eCarrito))
+        // Renderizamos el precio total en el HTML
+        total.textContent = calcularTotal();
+         //LocalStorage
+        
+         
      
     });
   
@@ -213,6 +226,10 @@ buttonVaciar.addEventListener('click', () => {
       {
           
           renderProductos(data);
+          if (localStorage.getItem("carriitooo")) {
+            eCarrito =  JSON.parse( localStorage.getItem('carriitooo') ) 
+      
+           }
           renderCarrito();                   
      }
                 
@@ -220,10 +237,6 @@ buttonVaciar.addEventListener('click', () => {
 
 
  fetchDatos();
- if (localStorage.getItem("carrito")) {
- eCarrito =  JSON.parse( localStorage.getItem('carrito') ) 
- renderCarrito();   
-}
-
+ 
 
 
